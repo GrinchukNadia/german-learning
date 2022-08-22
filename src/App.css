@@ -1,38 +1,375 @@
 .App {
-  text-align: center;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+.container {
+  max-width: 800px;
+}
+.header {
+  height: 70px;
+  border-bottom: 2px solid #e5e5e5;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.body {
+  /* flex-grow: 1; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 70px;
+  border-top: 2px solid #e5e5e5;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+.card {
+  /* overflow: hidden; */
+  /* height: 90%; */
+  /* border: 1px solid lightblue; */
+  position: relative;
+  min-height: 600px;
+  width: 762px;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+  padding: 16px;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.article {
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.article-arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+.article-arrow-top {
+  border-width: 0 8px 8px 8px;
+  border-color: transparent transparent #000000 transparent;
+}
+.article-arrow-left {
+  border-width: 8px 8px 8px 0;
+  border-color: transparent #000000 transparent transparent;
+}
+.article-arrow-right {
+  border-width: 8px 0 8px 8px;
+  border-color: transparent transparent transparent #000000;
+}
+.article-arrow-bottom {
+  border-width: 8px 8px 0 8px;
+  border-color: #000000 transparent transparent transparent;
+}
+.article-der {
+  top: 50%;
+  left: 108px;
+}
+.article-die {
+  top: 50%;
+  right: 108px;
+}
+.article-das {
+  top: 18px;
+  left: 49%;
+}
+.article-next {
+  bottom: 18px;
+  left: 49%;
+}
+.card-inner {
+  position: absolute;
+
+  max-width: 420px;
+  height: 80%;
+  margin: 40px 40px 40px 40px;
+
+  border: 1px solid #e5e5e5;
+  box-shadow: -1px 1px 8px 1px rgb(0 0 0 / 4%);
+  border-radius: 2%;
+  background-color: #ffffff;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  animation-duration: 0.5s;
+  /* animation-duration: 2s; */
+}
+.card-correct {
+  background-color: rgb(196, 255, 192);
+  border: 1px solid rgb(51, 180, 42);
 }
 
-.App-link {
-  color: #61dafb;
+.card-inner_img {
+  /* width: 100%; */
+  max-height: 440px;
+  overflow: hidden;
+  /* border-radius: 2%; */
+  padding: 10px 10px 0 10px;
+}
+.card-inner_img img {
+  width: 100%;
+}
+.card-inner_text {
+  width: 100%;
+  border-top: 1px solid #e5e5e5;
+  font-size: 34px;
+  text-align: center;
+  padding: 10px;
+}
+.card-inner_translate {
+  font-size: 18px;
+  color: #2e2e2e;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes tip {
+  0% {
+    margin: 40px 40px 40px 40px;
   }
-  to {
-    transform: rotate(360deg);
+  33% {
+    margin: 40px 40px 40px 90px;
+  }
+  67% {
+    margin: 40px 40px 40px 0px;
+  }
+  100% {
+    margin: 40px 40px 40px 40px;
+  }
+}
+
+@keyframes next-card {
+  0% {
+    margin: 40px 40px 40px 40px;
+  }
+  100% {
+    margin: 6000px 40px 40px 40px;
+  }
+}
+
+@keyframes rightR {
+  0% {
+    margin: 40px 40px 40px 40px;
+    background-color: white;
+  }
+  50% {
+    margin: 40px -100px 40px 40px;
+    background-color: rgb(196, 255, 192);
+    border: 1px solid rgb(51, 180, 42);
+  }
+  100% {
+    margin: 40px 40px 40px 40px;
+    background-color: rgb(196, 255, 192);
+    border: 1px solid rgb(51, 180, 42);
+  }
+}
+@keyframes rightL {
+  0% {
+    margin: 40px 40px 40px 40px;
+    background-color: white;
+  }
+  50% {
+    margin: 40px 40px 40px -100px;
+    background-color: rgb(196, 255, 192);
+    border: 1px solid rgb(51, 180, 42);
+  }
+  100% {
+    margin: 40px 40px 40px 40px;
+    background-color: rgb(196, 255, 192);
+    border: 1px solid rgb(51, 180, 42);
+  }
+}
+@keyframes rightT {
+  0% {
+    margin: 40px 40px 40px 40px;
+    background-color: white;
+  }
+  50% {
+    margin: -60px 40px 40px 40px;
+    background-color: rgb(196, 255, 192);
+    border: 1px solid rgb(51, 180, 42);
+  }
+  100% {
+    margin: 40px 40px 40px 40px;
+    background-color: rgb(196, 255, 192);
+    border: 1px solid rgb(51, 180, 42);
+  }
+}
+
+@keyframes wrongR {
+  0% {
+    margin: 40px 40px 40px 40px;
+    background-color: white;
+  }
+  50% {
+    margin: 40px -100px 40px 40px;
+    background-color: pink;
+    border: 1px solid #ff3c3c;
+  }
+  100% {
+    margin: 40px 40px 40px 40px;
+    background-color: white;
+  }
+}
+@keyframes wrongL {
+  0% {
+    margin: 40px 40px 40px 40px;
+    background-color: white;
+  }
+  50% {
+    margin: 40px 40px 40px -100px;
+    background-color: pink;
+    border: 1px solid #ff3c3c;
+  }
+  100% {
+    margin: 40px 40px 40px 40px;
+    background-color: white;
+  }
+}
+@keyframes wrongT {
+  0% {
+    margin: 40px 40px 40px 40px;
+    background-color: white;
+  }
+  50% {
+    margin: -60px 40px 40px 40px;
+    background-color: pink;
+    border: 1px solid #ff3c3c;
+  }
+  100% {
+    margin: 40px 40px 40px 40px;
+    background-color: white;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    width: 100%;
+    /* border: 2px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card {
+    width: 100%;
+    /* border: 2px solid; */
+  }
+  .article-der {
+    left: 10px;
+  }
+  .article-die {
+    right: 10px;
+  }
+}
+
+@media (max-width: 505px) {
+  @keyframes tip {
+    0% {
+      margin: 40px 40px 40px 40px;
+    }
+    33% {
+      margin: 40px 70px 40px 10px;
+    }
+    67% {
+      margin: 40px 10px 40px 70px;
+    }
+    100% {
+      margin: 40px 40px 40px 40px;
+    }
+  }
+
+  @keyframes rightR {
+    0% {
+      margin: 40px 40px 40px 40px;
+      background-color: white;
+    }
+    50% {
+      margin: 40px 10px 40px 70px;
+      background-color: rgb(196, 255, 192);
+      border: 1px solid rgb(51, 180, 42);
+    }
+    100% {
+      margin: 40px 40px 40px 40px;
+      background-color: rgb(196, 255, 192);
+      border: 1px solid rgb(51, 180, 42);
+    }
+  }
+  @keyframes rightL {
+    0% {
+      margin: 40px 40px 40px 40px;
+      background-color: white;
+    }
+    50% {
+      margin: 40px 70px 40px 10px;
+      background-color: rgb(196, 255, 192);
+      border: 1px solid rgb(51, 180, 42);
+    }
+    100% {
+      margin: 40px 40px 40px 40px;
+      background-color: rgb(196, 255, 192);
+      border: 1px solid rgb(51, 180, 42);
+    }
+  }
+
+  @keyframes wrongR {
+    0% {
+      margin: 40px 40px 40px 40px;
+      background-color: white;
+    }
+    50% {
+      margin: 40px 10px 40px 70px;
+      background-color: pink;
+      border: 1px solid #ff3c3c;
+    }
+    100% {
+      margin: 40px 40px 40px 40px;
+      background-color: white;
+    }
+  }
+  @keyframes wrongL {
+    0% {
+      margin: 40px 40px 40px 40px;
+      background-color: white;
+    }
+    50% {
+      margin: 40px 70px 40px 10px;
+      background-color: pink;
+      border: 1px solid #ff3c3c;
+    }
+    100% {
+      margin: 40px 40px 40px 40px;
+      background-color: white;
+    }
+  }
+}
+
+@media screen and (max-width: 474px) {
+  .card {
+    min-height: 530px;
+  }
+  .article-das {
+    top: 10px;
+  }
+  .article-next {
+    bottom: 10px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .card {
+    min-height: 430px;
   }
 }
