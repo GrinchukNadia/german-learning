@@ -80,7 +80,10 @@ class Body extends React.Component {
   }
 
   handleTouchStart(evt) {
+    if (evt.target.tagName !== 'IMG') return;
+    console.log(evt.target.tagName);
     const firstTouch = this.getTouches(evt)[0];
+
     this.setState({
       xDown: firstTouch.clientX,
       yDown: firstTouch.clientY,
