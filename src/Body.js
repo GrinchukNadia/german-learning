@@ -19,11 +19,85 @@ class Body extends React.Component {
       yDown: null,
     };
     this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.getTouches = this.getTouches.bind(this);
-    this.handleTouchStart = this.handleTouchStart.bind(this);
-    this.handleTouchMove = this.handleTouchMove.bind(this);
-    // this.handleKeyUp = this.handleKeyUp.bind(this);
-    // this.handleAnyKey = this.handleAnyKey.bind(this);
+    this.handleTouchEnd = this.handleTouchEnd.bind(this);
+  }
+
+  handleTouchEnd(e) {
+    if (!e.target.closest('.article')) {
+      return;
+    }
+
+    const cardArtickel = dataNew[this.state.card][0];
+
+    if (
+      e.target.closest('.article').dataset.article === 'der' &&
+      cardArtickel !== 'der' &&
+      !this.state.isAnswerd
+    ) {
+      this.setState({ animationName: 'wrongL' });
+    }
+    if (
+      e.target.closest('.article').dataset.article === 'der' &&
+      cardArtickel === 'der'
+    ) {
+      this.setState({
+        animationName: 'rightL',
+        translation: dataNew[this.state.card][2],
+        article: dataNew[this.state.card][0],
+        style: 'card-correct',
+        isAnswerd: true,
+      });
+    }
+
+    if (
+      e.target.closest('.article').dataset.article === 'die' &&
+      cardArtickel !== 'die' &&
+      !this.state.isAnswerd
+    ) {
+      this.setState({ animationName: 'wrongR' });
+    }
+    if (
+      e.target.closest('.article').dataset.article === 'die' &&
+      cardArtickel === 'die'
+    ) {
+      this.setState({
+        animationName: 'rightR',
+        translation: dataNew[this.state.card][2],
+        article: dataNew[this.state.card][0],
+        style: 'card-correct',
+        isAnswerd: true,
+      });
+    }
+
+    if (
+      e.target.closest('.article').dataset.article === 'das' &&
+      cardArtickel !== 'das' &&
+      !this.state.isAnswerd
+    ) {
+      this.setState({ animationName: 'wrongT' });
+    }
+    if (
+      e.target.closest('.article').dataset.article === 'das' &&
+      cardArtickel === 'das'
+    ) {
+      this.setState({
+        animationName: 'rightT',
+        translation: dataNew[this.state.card][2],
+        article: dataNew[this.state.card][0],
+        style: 'card-correct',
+        isAnswerd: true,
+      });
+    }
+
+    if (
+      e.target.closest('.article').dataset.article === 'next' &&
+      this.state.isAnswerd
+    ) {
+      this.setState({
+        animationName: 'next-card',
+        isAnswerd: false,
+      });
+    }
   }
 
   handleKeyDown(e) {
@@ -75,107 +149,15 @@ class Body extends React.Component {
     }
   }
 
-  getTouches(evt) {
-    return evt.touches || evt.originalEvent.touches;
-  }
-
-  handleTouchStart(evt) {
-    if (evt.target.tagName !== 'IMG') return;
-    console.log(evt.target.tagName);
-    const firstTouch = this.getTouches(evt)[0];
-
-    this.setState({
-      xDown: firstTouch.clientX,
-      yDown: firstTouch.clientY,
-    });
-  }
-
-  handleTouchMove(evt) {
-    if (!this.state.xDown || !this.state.yDown) {
-      return;
-    }
-
-    let xUp = evt.touches[0].clientX;
-    let yUp = evt.touches[0].clientY;
-
-    let xDiff = this.state.xDown - xUp;
-    let yDiff = this.state.yDown - yUp;
-    const cardArtickel = dataNew[this.state.card][0];
-
-    if (Math.abs(xDiff) > Math.abs(yDiff)) {
-      if (xDiff > 0) {
-        // console.log('left swipe');
-        if (cardArtickel !== 'der' && !this.state.isAnswerd) {
-          this.setState({ animationName: 'wrongL' });
-        }
-        if (cardArtickel === 'der') {
-          this.setState({
-            animationName: 'rightL',
-            translation: dataNew[this.state.card][2],
-            article: dataNew[this.state.card][0],
-            style: 'card-correct',
-            isAnswerd: true,
-          });
-        }
-      } else {
-        // console.log('right swipe');
-        if (cardArtickel !== 'die' && !this.state.isAnswerd) {
-          this.setState({ animationName: 'wrongR' });
-        }
-        if (cardArtickel === 'die') {
-          this.setState({
-            animationName: 'rightR',
-            translation: dataNew[this.state.card][2],
-            article: dataNew[this.state.card][0],
-            style: 'card-correct',
-            isAnswerd: true,
-          });
-        }
-      }
-    } else {
-      if (yDiff > 0) {
-        // console.log('up swipe');
-        if (cardArtickel !== 'das' && !this.state.isAnswerd) {
-          this.setState({ animationName: 'wrongT' });
-        }
-        if (cardArtickel === 'das') {
-          this.setState({
-            animationName: 'rightT',
-            translation: dataNew[this.state.card][2],
-            article: dataNew[this.state.card][0],
-            style: 'card-correct',
-            isAnswerd: true,
-          });
-        }
-      } else {
-        // console.log('down swipe');
-        if (this.state.isAnswerd) {
-          this.setState({
-            animationName: 'next-card',
-            isAnswerd: false,
-          });
-        }
-      }
-    }
-
-    /* reset values */
-    this.setState({
-      xDown: null,
-      yDown: null,
-    });
-  }
-
   componentDidMount() {
     document.addEventListener('animationstart', () => {
       document.removeEventListener('keydown', this.handleKeyDown, false);
-      document.removeEventListener('touchstart', this.handleTouchStart, false);
-      document.removeEventListener('touchmove', this.handleTouchMove, false);
+      document.removeEventListener('touchstart', this.handleTouchEnd, false);
     });
 
     document.addEventListener('animationend', () => {
       document.addEventListener('keydown', this.handleKeyDown, false);
-      document.addEventListener('touchstart', this.handleTouchStart, false);
-      document.addEventListener('touchmove', this.handleTouchMove, false);
+      document.addEventListener('touchstart', this.handleTouchEnd, false);
     });
   }
 

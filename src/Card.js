@@ -4,19 +4,19 @@ function Card(props) {
   const animation = { animationName: props.animation };
   return (
     <div className='card'>
-      <div className='article article-der'>
+      <div className='article article-der' data-article="der">
         <div className='article-arrow article-arrow-left'></div>
         <div>der</div>
       </div>
-      <div className='article article-die'>
+      <div className='article article-die' data-article="die">
         <div className='article-arrow article-arrow-right'></div>
         <div>die</div>
       </div>
-      <div className='article article-das'>
+      <div className='article article-das' data-article="das">
         <div className='article-arrow article-arrow-top'></div>
         <div>das</div>
       </div>
-      <div className='article article-next'>
+      <div className='article article-next' data-article="next">
         <div>nächste</div>
         <div className='article-arrow article-arrow-bottom'></div>
       </div>
