@@ -51,19 +51,19 @@ export const data = [
     'die',
     'Stunde',
     'Час, урок',
-    'https://identityspecialist.files.wordpress.com/2010/06/onehour.gif?w=412&h=413&crop=1',
+    'https://i.pinimg.com/564x/5b/13/2c/5b132c9f799cda29df69e49c66cc7b4e.jpg',
   ],
   [
     'die',
     'Minute',
     'Минута',
-    'https://cdn.pixabay.com/photo/2013/07/18/10/57/clock-163580_640.jpg',
+    'https://i.pinimg.com/564x/8c/99/14/8c9914b9754bc67714343ac572375f39.jpg',
   ],
   [
     'die',
     'Sekunde',
     'Секунда',
-    'https://thumbs.dreamstime.com/b/second-minute-stopwatch-icon-flat-design-blue-background-140990052.jpg',
+    'https://i.pinimg.com/564x/83/e1/d8/83e1d88b98264660716aff15c7e3899e.jpg',
   ],
   [
     'der',
@@ -111,7 +111,7 @@ export const data = [
     'der',
     'Wochentag',
     'День недели',
-    'https://previews.123rf.com/images/jovanas/jovanas1608/jovanas160800911/61656527-days-of-the-week-calendar-sheets-with-the-days-of-the-week.jpg',
+    'https://i.pinimg.com/564x/2f/ed/f6/2fedf6a341ccdcc81e436fee668723e0.jpg',
   ],
   [
     'der',
@@ -441,7 +441,7 @@ export const data = [
     'die',
     'Entschuldigung',
     'Извинение',
-    'https://st3.depositphotos.com/17484154/19463/i/450/depositphotos_194635344-stock-photo-young-husband-asking-forgiveness-wife.jpg',
+    'https://i.pinimg.com/564x/ec/be/cc/ecbecc0a4433a0360fa6182f59d56a36.jpg',
   ],
   [
     'die',
@@ -603,7 +603,7 @@ export const data = [
     'der',
     'Anrufbeantworter',
     'Автоответчик',
-    'https://www.telphin.ru/static/img/blog/recommendations/avtootvetchik-dlja-kompanii/img_1.jpg',
+    'https://i.pinimg.com/564x/21/ec/e2/21ece2ba414c385465ddef8d313850c3.jpg',
   ],
   [
     'das',
